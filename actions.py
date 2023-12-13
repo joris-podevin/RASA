@@ -12,6 +12,7 @@ from typing import Any, Text, Dict, List
 from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
 import requests
+import json
 
 #
 #
@@ -37,7 +38,24 @@ class ActionSchedule(Action):
              tracker: Tracker,
              domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
            res = requests.get('http://10.104.21.124:8085/cours/getBySalle/c138')
-           dispatcher.utter_message(text=res.text)
+           res.text
+           testJson = json.loads(res.text)
+           jsonList = []
+           cpt=0
+           while (cpt<len(testJson)):
+                      matiere = testJson[cpt]["matiere"]	
+                      jsonList.append(matiere)
+                      print(jsonList)
+                      cpt+=1
+           cpt=0
+           reponse = "les prochains cours sont : "
+           while(cpt<len(jsonList)):
+                      reponse += jsonList[cpt]
+                      reponse += ", "
+                      print (reponse)
+                      cpt+=1
+            
+           dispatcher.utter_message(text=reponse)
 	
            return []
 

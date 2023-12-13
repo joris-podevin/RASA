@@ -1,0 +1,105 @@
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
+intents:
+- greet
+- goodbye
+- affirm
+- deny
+- mood_great
+- mood_unhappy
+- bot_challenge
+- ask_schedule
+- give_group
+- give_section
+- give_test_answer
+- give_message
+- give_contact
+- ask_contact
+- ask_room
+- give_all_rooms
+- give_room
+entities:
+- section
+- group
+- contact
+- message
+- room
+slots:
+  contact:
+    type: categorical
+    values:
+    - bernard
+    - robert
+    - philippe
+    - evelyne
+    - jane
+  group:
+    type: categorical
+    values:
+    - alternant
+    - classique
+  message:
+    type: text
+  room:
+    type: categorical
+    values:
+    - c020
+    - c022
+    - c024
+    - c026
+    - c028
+    - c038
+    - stat 1
+    - stat 2
+    - stat 3
+    - stat 4
+    - stat 5
+    - stat 6
+    - stat 7
+    - amphi blaise
+  section:
+    type: categorical
+    values:
+    - m1
+    - m2
+responses:
+  utter_greet:
+  - text: Hey! How are you?
+  utter_cheer_up:
+  - image: https://i.imgur.com/KhXKJo2_d.webp?maxwidth=520&shape=thumb&fidelity=high
+    text: 'Here is something to cheer you up:'
+  utter_did_that_help:
+  - text: Did that help you?
+  utter_happy:
+  - text: Great, carry on!
+  utter_goodbye:
+  - text: Bye
+  utter_iamabot:
+  - text: I am a bot, powered by Rasa.
+  utter_ask_section:
+  - text: Quelle est ta section ?
+  - text: J'ai besoin de ta section
+  - text: Dis moi quelle est ta section
+  utter_ask_group:
+  - text: Quel est ton groupe ?
+  - text: Donne moi ton groupe s'il te plait
+  - text: Dans quel groupe es tu ?
+  utter_give_test:
+  - text: You are right this is a test
+  - text: testing is one of my passion
+  utter_ask_message:
+  - text: Dis moi quel message veux tu envoyer s'il te plait
+  - text: Quel est ton message ?
+  - text: Que veux tu envoyer ?
+  utter_ask_room:
+  - text: Veux tu une salle en particulier ?
+  utter_ask_contact:
+  - text: qui veux tu contacter ?
+  - text: quelle personne veux tu contacter ?
+  - text: a qui envoyer un message ?
+actions:
+- action_schedule
+- action_all_rooms
+- action_room
+- action_contact

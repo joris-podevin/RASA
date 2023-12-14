@@ -44,25 +44,22 @@ slots:
   room:
     type: categorical
     values:
-    - c020
-    - c022
-    - c024
-    - c026
-    - c028
-    - c038
-    - stat 1
-    - stat 2
-    - stat 3
-    - stat 4
-    - stat 5
-    - stat 6
-    - stat 7
+    - c136
+    - c137
+    - c138
+    - a01
+    - a02
+    - amphi ada
     - amphi blaise
+    - c038
   section:
     type: categorical
     values:
-    - m1
-    - m2
+    - m1 sicom
+    - m2 sicom
+    - m1 hse
+    - m2 hse
+    - l3 info
 responses:
   utter_greet:
   - text: Hey! How are you?

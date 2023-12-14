@@ -19,6 +19,7 @@
 - of course
 - that sounds good
 - correct
+- oui
 
 ## intent:deny
 - no
@@ -70,6 +71,11 @@
 - can you give me my shchedule ?
 - schedule ?
 - what is my schedule please ? i'm in section 1 group 9
+- emploi du temps
+- mon emploi du temps
+- edt
+- l'emploi du temps
+- mes cours
 
 ## intent:give_section
 - my section is [M1](section)
@@ -81,6 +87,16 @@
 - section 1
 - i'm in section 7
 - my section is 2
+- [m1 sicom](section)
+- je suis en [m1 sicom](section)
+- [m2 sicom](section)
+- je suis en [m2 sicom](section)
+- [m1 hse](section)
+- en [m1 hse](section)
+- [m2 hse](section)
+- je suis en [m2 hse](section)
+- [l3 informatique](section)
+- je suis en [l3 informatique](section)
 
 ## intent:give_group
 - my group is [alternant](group)
@@ -113,10 +129,22 @@
 - salle [c022](room)
 - salle [c038](room)[c038](section)
 - la salle [c038](room)
-- amphi blaise
 - l'[amphi blaise](room)
 - la [c040](room)[c040](room)[c040](section)
 - [c036](room)
+- [c136](room)[c136](section)
+- salle [c136](room)
+- salle [c137](room)
+- [c137](room)
+- [c138](room)
+- salle [c138](room)
+- en [amphi blaise](room)[amphi blaise](section)
+- en [amphi ada](room)[amphi ada](section)
+- l'[amphi ada](room)
+- salle [ao1](room)
+- [ao2](room)
+- [ao1](room)
+- salle [ao2](room)
 
 ## intent:ask_room
 - salle libre

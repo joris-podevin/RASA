@@ -29,6 +29,8 @@ import json
 #
 #         return []
 
+"""
+
 class ActionSchedule(Action):
 
      def name(self) -> Text:
@@ -37,7 +39,8 @@ class ActionSchedule(Action):
      def run(self, dispatcher: CollectingDispatcher,
              tracker: Tracker,
              domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-           res = requests.get('http://10.104.21.124:8085/cours/getBySalle/c138')
+           room = tracker.get_slot('room')
+           res = requests.get('http://10.104.22.124:8085/cours/getBySalle/c138')
            res.text
            testJson = json.loads(res.text)
            jsonList = []
@@ -54,10 +57,45 @@ class ActionSchedule(Action):
                       reponse += ", "
                       print (reponse)
                       cpt+=1
-            
+           reponse +=  room
            dispatcher.utter_message(text=reponse)
 	
            return []
+
+"""
+
+
+class ActionSchedule(Action):
+
+     def name(self) -> Text:
+         return "action_schedule"
+
+     def run(self, dispatcher: CollectingDispatcher,
+             tracker: Tracker,
+             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+           section = tracker.get_slot('section')
+           groupe = tracker.get_slot('group')
+           requete = "http://10.104.22.124:8085/cours/getCours/"+groupe+"/"+section+"/"+"2023-11-16T08:00:00"
+           print (requete)
+           res = requests.get(requete)
+           res.text
+           jsonRequest = json.loads(res.text)
+           jsonList=[]
+           cpt = 0
+           reponse = "les cours d'aujourd'hui sont : "
+           while (cpt<len(jsonRequest)):
+                      reponse += jsonRequest[cpt]["matiere"]
+                      reponse += " de "
+                      debut = jsonRequest[cpt]["dateDebut"]
+                      fin = jsonRequest[cpt]["dateFin"]
+                      reponse += debut[11:13] + " heure " + debut[14:16] + " a " + fin[11:13] + " heure " + fin[14:16]
+                      reponse += " en salle " + jsonRequest[cpt]["salle"]
+                      reponse+=" "
+                      cpt+=1
+           dispatcher.utter_message(text=reponse)
+	
+           return []
+
 
 
 class ActionRoom(Action):

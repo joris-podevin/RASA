@@ -198,5 +198,15 @@
 ## intent:give_agroscience
 - agroscience
 - plan d'agroscience
-- agroscience s'il te plait 
+- agroscience s'il te plait
 - donne moi le plan d'agroscience
+
+## intent:ask_news
+- news
+- nouveauté
+- quoi de neuf
+- what's up ?
+
+## intent:ask_description
+- description
+- la description

@@ -14,8 +14,9 @@ from rasa_sdk.executor import CollectingDispatcher
 import requests
 import json
 from datetime import datetime
+#import feedparser
 
-IPAddress = "10.104.28.101"
+IPAddress = "10.104.21.124"
 
 #
 #
@@ -136,6 +137,53 @@ class ActionContact(Action):
              tracker: Tracker,
              domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
 
-           dispatcher.utter_message(text="/EXAMPLE/ message bien pris en compte")
+           
+           contact = tracker.get_slot('contact')
+           requete = "http://"+IPAddress+":8085/professeurs/getByName/Robert"
+           res = requests.get(requete)
+           reponse = "le contact de " + contact  + " est " + res.text
+           
+           dispatcher.utter_message(text=reponse)
 	
            return []
+
+
+class ActionNews(Action):
+
+     def name(self) -> Text:
+         return "action_news"
+
+     def run(self, dispatcher: CollectingDispatcher,
+             tracker: Tracker,
+             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+
+           requete = "http://"+IPAddress+":8085/cours/infoTitre"
+           res = requests.get(requete)
+           reponse = res.text
+           dispatcher.utter_message(text=reponse)
+	
+           return []
+           
+           
+           
+class ActionDescription(Action):
+
+     def name(self) -> Text:
+         return "action_description"
+
+     def run(self, dispatcher: CollectingDispatcher,
+             tracker: Tracker,
+             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+           
+           
+           requete = "http://"+IPAddress+":8085/cours/infoDetails"
+           res = requests.get(requete)
+           reponse = res.text
+           dispatcher.utter_message(text=reponse)
+	
+           return []
+
+
+
+
+

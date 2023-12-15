@@ -47,8 +47,6 @@
 * ask_contact
   - utter_ask_contact
 * give_contact
-  - utter_ask_message
-* give_message
   - action_contact
   - utter_goodbye
 
@@ -75,4 +73,16 @@
   - utter_ask_site
 * give_agroscience
   - utter_give_agroscience
+  - utter_goodbye
+
+## news
+* greet
+  - utter_greet
+* ask_news
+  - action_news
+  - utter_description
+
+## description
+* ask_description
+  - action_description
   - utter_goodbye

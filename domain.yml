@@ -22,6 +22,8 @@ intents:
 - give_ceri
 - ask_map
 - give_agroscience
+- ask_news
+- ask_description
 entities:
 - section
 - group
@@ -106,7 +108,11 @@ responses:
   utter_give_agroscience:
   - image: https://media.discordapp.net/attachments/763420972204163092/763421914361626654/unknown.png?ex=658c4210&is=6579cd10&hm=3920054073d74e3cfa3bf9c715471b917e22634583b0b5ada4e8d882be6c6f24&=&format=webp&quality=lossless&width=896&height=863
     text: Voici le plan d'agroscience
+  utter_description:
+  - text: Pour une description detaillee de cette faille, merci de dire description
 actions:
 - action_schedule
 - action_all_rooms
 - action_contact
+- action_news
+- action_description

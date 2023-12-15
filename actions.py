@@ -13,6 +13,9 @@ from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
 import requests
 import json
+from datetime import datetime
+
+IPAddress = "10.104.28.101"
 
 #
 #
@@ -75,7 +78,7 @@ class ActionSchedule(Action):
              domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
            section = tracker.get_slot('section')
            groupe = tracker.get_slot('group')
-           requete = "http://10.104.22.124:8085/cours/getCours/"+groupe+"/"+section+"/"+"2023-11-16T08:00:00"
+           requete = "http://"+IPAddress+":8085/cours/getCours/"+groupe+"/"+section+"/"+"2023-11-16T08:00:00"
            print (requete)
            res = requests.get(requete)
            res.text
@@ -97,20 +100,6 @@ class ActionSchedule(Action):
            return []
 
 
-
-class ActionRoom(Action):
-
-     def name(self) -> Text:
-         return "action_room"
-
-     def run(self, dispatcher: CollectingDispatcher,
-             tracker: Tracker,
-             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-
-           dispatcher.utter_message(text="/EXAMPLE/ la salle est libre")
-	
-           return []
-
 class ActionAllRooms(Action):
 
      def name(self) -> Text:
@@ -120,7 +109,19 @@ class ActionAllRooms(Action):
              tracker: Tracker,
              domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
 
-           dispatcher.utter_message(text="/EXAMPLE/ les salles A B C sont libres")
+           now = datetime.now().time()
+           time = now.strftime("%H:%M:%S")
+           print (time)
+           requete = "http://"+IPAddress+":8085/salles/getFreeSalles/"+time
+           res = requests.get(requete)
+           jsonRequest = json.loads(res.text)
+           jsonList=[]
+           cpt = 0
+           reponse = "les salles libres en ce moment sont : "
+           while (cpt <len(jsonRequest)):
+                      reponse += jsonRequest[cpt]+" "
+                      cpt+=1           
+           dispatcher.utter_message(text=reponse)
 	
            return []
            

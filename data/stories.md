@@ -56,16 +56,23 @@
 * greet
   - utter_greet
 * ask_room
-  - utter_ask_room
-* give_all_rooms
   - action_all_rooms
   - utter_goodbye
 
-## room
+## map_ceri
 * greet
   - utter_greet
-* ask_room
-  - utter_ask_room
-* give_room
-  - action_room
+* ask_map
+  - utter_ask_site
+* give_ceri
+  - utter_give_ceri
+  - utter_goodbye
+
+## map_agroscience
+* greet
+  - utter_greet
+* ask_map
+  - utter_ask_site
+* give_agroscience
+  - utter_give_agroscience
   - utter_goodbye

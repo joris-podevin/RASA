@@ -149,6 +149,10 @@
 ## intent:ask_room
 - salle libre
 - est ce qu'une salle est libre ?
+- salles libres
+- quelles sont les salles libres
+- salles
+- donne moi les salles libres
 
 ## intent:give_all_rooms
 - toutes
@@ -178,3 +182,21 @@
 
 ## intent:give_message
 - colis recu
+
+## intent:ask_map
+- plan
+- donne moi le plan
+- map
+- plan du batiment
+
+## intent:give_ceri
+- ceri
+- le ceri
+- donne moi le ceri
+- le plan du ceri
+
+## intent:give_agroscience
+- agroscience
+- plan d'agroscience
+- agroscience s'il te plait 
+- donne moi le plan d'agroscience

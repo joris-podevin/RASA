@@ -14,6 +14,7 @@ from rasa_sdk.executor import CollectingDispatcher
 import requests
 import json
 from datetime import datetime
+import re
 #import feedparser
 
 IPAddress = "10.104.21.124"
@@ -179,6 +180,7 @@ class ActionDescription(Action):
            requete = "http://"+IPAddress+":8085/cours/infoDetails"
            res = requests.get(requete)
            reponse = res.text
+           reponse = re.sub(r"<.*?>", '', reponse)
            dispatcher.utter_message(text=reponse)
 	
            return []
